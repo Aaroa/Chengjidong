@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.jiedaoche.tigeroil.view.CircularImageView
+        android:id="@+id/login_head_iv"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_above="@+id/login_edit_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dip"
+        android:src="@drawable/defalut_patient_icon" />
+
+    <LinearLayout
+        android:id="@+id/login_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="15dip"
+        android:orientation="vertical" >
+
+        <com.jiedaoche.tigeroil.widget.LoginEditView
+            android:id="@+id/login_user_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.jiedaoche.tigeroil.widget.LoginEditView
+            android:id="@+id/login_user_pass_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-15dip" />
+
+        <TextView
+            android:id="@+id/login_regist_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dip"
+            android:layout_marginTop="-5dip"
+            android:text="注册"
+            android:textColor="@color/btn_greed"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        style="@style/comm_greed_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dip"
+        android:layout_below="@+id/login_edit_layout"
+        android:layout_marginLeft="25dip"
+        android:layout_marginRight="25dip"
+        android:layout_marginTop="40dip"
+        android:text="登录" />
+
+</RelativeLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- CircularImageView for custom shape -->
+    <declare-styleable name="CircularImageView">
+
+        <!-- Specifies whether or not to draw a circular border around the image. -->
+        <attr name="border" format="boolean"></attr>
+        <!-- Specifies the color of the border draw around the image. (if enabled) -->
+        <attr name="border_color" format="color"></attr>
+        <!-- Makes the border this pixels wide. (if enabled) -->
+        <attr name="border_width" format="dimension"></attr>
+        <!-- Specifies whether or not to draw a selector on this view upon touch events. -->
+        <attr name="selector" format="boolean"></attr>
+        <!-- Specifies the color of the selector draw on top of the image upon touch events. (if enabled) -->
+        <attr name="selector_color" format="color"></attr>
+        <!-- Specifies the color of the selector stroke drawn around the image upon touch events. Be sure to provide some opacity. (if enabled) -->
+        <attr name="selector_stroke_color" format="color"></attr>
+        <!-- Makes the selector stroke drawn around the image upon touch events this pixels wide. (if enabled) -->
+        <attr name="selector_stroke_width" format="dimension"></attr>
+        <!-- Specifies whether or not to draw a shadow around your circular image. -->
+        <attr name="shadow" format="boolean"></attr>
+        <attr name="progressBarStyleLarge" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="CustomCircularImageViewTheme">
+        <attr name="circularImageViewStyle" format="reference" />
+    </declare-styleable>
+
+    <string-array name="grade">
+        <item>全部</item>
+        <item>畅通</item>
+        <item>一般</item>
+        <item>拥挤</item>
+    </string-array>
+    <string-array name="distance">
+        <item>1公里~2公里</item>
+        <item>2公里~3公里</item>
+        <item>3公里~4公里</item>
+        <item>4公里~5公里</item>
+        <item>5公里以上</item>
+    </string-array>
+    <string-array name="time">
+        <item>00:00—03:00</item>
+        <item>03:00—06:00</item>
+        <item>06:00—09:00</item>
+        <item>09:00—12:00</item>
+        <item>12:00—15:00</item>
+        <item>15:00—18:00</item>
+        <item>18:00—21:00</item>
+        <item>21:00—24:00</item>
+    </string-array>
+
+</resources>

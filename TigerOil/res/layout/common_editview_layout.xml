@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|left"
+        android:layout_margin="10dip"
+        android:background="@drawable/gas_station_bg_n" >
+
+        <EditText
+            android:id="@+id/commont_editview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparency"
+            android:gravity="left|top"
+            android:minHeight="100dip"
+            android:padding="10dip"
+            android:textColor="@color/balck"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/commont_editview_btn"
+        style="@style/comm_greed_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_margin="15dip"
+        android:text="确定" />
+
+</LinearLayout>

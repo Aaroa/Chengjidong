@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/text1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dip"
+        android:layout_marginRight="1dip"
+        android:background="@drawable/settion_selector_selector"
+        android:padding="8dip" >
+
+        <TextView
+            android:id="@+id/car_code_serial_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:text="1"
+            android:textColor="@color/text1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/car_code_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/aipay_arrow"
+            android:text="4512511"
+            android:textColor="@color/text1"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</LinearLayout>

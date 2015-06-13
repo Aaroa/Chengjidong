@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/regist_phone_et"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/common_input_bg"
+        android:hint="输入手机号"
+        android:padding="10dip"
+        android:textSize="15sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="8dip"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/regist_verify_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip"
+            android:layout_toLeftOf="@+id/regist_verify_btn"
+            android:background="@drawable/common_input_bg"
+            android:hint="输入验证号"
+            android:padding="10dip"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/regist_verify_btn"
+            android:layout_width="100dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            style="@style/comm_red_btn"
+            android:singleLine="true"
+            android:text="获取验证码"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/regist_btn"
+        style="@style/comm_greed_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dip"
+        android:layout_margin="20dip"
+        android:text="注册" />
+
+</LinearLayout>
