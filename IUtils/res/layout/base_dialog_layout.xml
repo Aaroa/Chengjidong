@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/base_dialog_background"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dialog_title_left_right_padding"
+            android:layout_marginRight="@dimen/dialog_title_left_right_padding"
+            android:gravity="center"
+            android:padding="@dimen/dialog_title_padding"
+            android:text="@string/defalut_dialog_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dialog_title_size" />
+
+        <FrameLayout
+            android:id="@+id/dialog_content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/dialog_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right"
+            android:gravity="right|center"
+            android:padding="@dimen/dialog_bottom_layout_padding" >
+
+            <TextView
+                android:id="@+id/dialog_calcel_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dialog_btn_selector"
+                android:gravity="center"
+                android:paddingBottom="7dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:paddingTop="7dip"
+                android:text="@string/defalut_dialog_cancel_text"
+                android:textColor="@color/dialog_btn_text"
+                android:textSize="@dimen/dialog_btn_size" />
+
+            <TextView
+                android:id="@+id/dialog_confirm_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dialog_btn_selector"
+                android:gravity="center"
+                android:paddingBottom="7dip"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:paddingTop="7dip"
+                android:text="@string/defalut_dialog_confirm_text"
+                android:textColor="@color/dialog_btn_text"
+                android:textSize="@dimen/dialog_btn_size"
+                android:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

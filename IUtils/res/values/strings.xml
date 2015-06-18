@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IUtils</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Dilaog -->
+    <string name="defalut_dialog_title">标题</string>
+    <string name="defalut_dialog_confirm_text">确定</string>
+    <string name="defalut_dialog_cancel_text">取消</string>
+    <string name="defalut_loading_dialog_text">加载中...</string>
+
+</resources>
