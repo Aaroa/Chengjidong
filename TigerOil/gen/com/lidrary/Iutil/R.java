@@ -29,26 +29,26 @@ public final class R {
 		public static final int base_dialog_background = 0x7f020005;
 		public static final int common_input_bg = 0x7f02001a;
 		public static final int dialog_btn_selector = 0x7f020021;
-		public static final int ic_launcher = 0x7f020029;
-		public static final int mini_back = 0x7f020069;
-		public static final int progress_small = 0x7f020073;
+		public static final int ic_launcher = 0x7f02002a;
+		public static final int mini_back = 0x7f02007e;
+		public static final int progress_small = 0x7f020088;
 	}
 	public static final class id {
-		public static final int bar = 0x7f05007c;
+		public static final int bar = 0x7f050088;
 		public static final int dialog_bottom_layout = 0x7f050056;
 		public static final int dialog_calcel_text = 0x7f050057;
 		public static final int dialog_confirm_text = 0x7f050058;
 		public static final int dialog_content_layout = 0x7f050055;
 		public static final int dialog_edit = 0x7f050062;
-		public static final int dialog_msg_text = 0x7f05007e;
+		public static final int dialog_msg_text = 0x7f05008a;
 		public static final int dialog_title = 0x7f050054;
-		public static final int loading_tv = 0x7f05007d;
+		public static final int loading_tv = 0x7f050089;
 	}
 	public static final class layout {
 		public static final int base_dialog_layout = 0x7f03000f;
 		public static final int common_dialog_edit_layout = 0x7f030014;
-		public static final int loading_dialog_layout = 0x7f03001e;
-		public static final int message_dialog_layout = 0x7f03001f;
+		public static final int loading_dialog_layout = 0x7f030021;
+		public static final int message_dialog_layout = 0x7f030022;
 	}
 	public static final class string {
 		public static final int action_settings = 0x7f070008;

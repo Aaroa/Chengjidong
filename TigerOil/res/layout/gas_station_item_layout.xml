@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="98dip"
+        android:layout_margin="10dip"
+        android:background="@drawable/gas_station_item_bg" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/item_right_layout"
+            android:orientation="vertical"
+            android:padding="5dip" >
+
+            <TextView
+                android:id="@+id/gas_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="中国石力加油站"
+                android:textColor="@color/balck"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/gas_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24Km  中国石力加油站"
+                android:textColor="@color/text1"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:text="排队状态:"
+                    android:textColor="@color/text1"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/gas_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:text="不排除"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_right_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/gas_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dip"
+                android:layout_marginTop="7dip"
+                android:background="@drawable/settion_selector_selector"
+                android:drawableTop="@drawable/wallet_base_icon_info"
+                android:padding="6dip"
+                android:text="详情"
+                android:textColor="@color/text1"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dip"
+            android:layout_above="@+id/map_gas_nav"
+            android:background="@color/text1" />
+
+        <TextView
+            android:id="@+id/map_gas_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/settion_selector_selector"
+            android:drawableLeft="@drawable/main_icon_route"
+            android:gravity="center"
+            android:text="到这儿"
+            android:padding="5dip"
+            android:textColor="@color/text1"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</LinearLayout>

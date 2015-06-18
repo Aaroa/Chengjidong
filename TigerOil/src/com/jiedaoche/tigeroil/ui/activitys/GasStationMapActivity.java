@@ -388,6 +388,5 @@ public class GasStationMapActivity extends BaseActivity {
 				}
 			});
 		}
-
 	};
 }

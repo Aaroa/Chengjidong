@@ -186,6 +186,14 @@ public class OrderControl {
 						PopupWindowUtil.dismissDialog(popupWindow);
 					}
 				});
+		view.findViewById(R.id.sex_pop_cancel_btn).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						PopupWindowUtil.dismissDialog(popupWindow);
+					}
+				});
 		popupWindow = PopupWindowUtil.createPopupWindow(mContext, view,
 				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		popupWindow.showAtLocation(mView, Gravity.BOTTOM, 0, 0);

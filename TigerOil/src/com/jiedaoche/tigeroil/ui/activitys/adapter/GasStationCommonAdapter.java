@@ -40,7 +40,7 @@ public class GasStationCommonAdapter extends BaseAdapter {
 			"深圳科技园加油站", "普滨加油站" };
 	private String[] address = new String[] { "广州市天河区天府路冠盛酒店旁，天河公园正门附近",
 			"广州市天河区黄埔大道241号", "深圳市南山区白石路3699号", "深圳市龙华新区民乐立交附近" };
-	private String[] state=new String[]{"畅通","一般","拥挤","畅通"};
+	private String[] state=new String[]{"空闲","一般","爆满","空闲"};
 	private String[] distance = new String[] { "2.1", "8.0", "6.0", "4.3" };
 	private double[] lng = new double[] { 23.133318, 23.127302, 22.538014,
 			22.603942 };

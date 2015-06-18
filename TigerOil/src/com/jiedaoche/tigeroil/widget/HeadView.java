@@ -25,6 +25,8 @@ public class HeadView extends LinearLayout {
 
 	private TextView mCenterText;
 
+	private TextView mRightText;
+
 	public HeadView(Context context) {
 		super(context);
 		init();
@@ -43,6 +45,8 @@ public class HeadView extends LinearLayout {
 				.findViewById(R.id.common_head_view_back_text);
 		mCenterText = (TextView) view
 				.findViewById(R.id.common_head_view_center_text);
+		mRightText = (TextView) view
+				.findViewById(R.id.common_head_view_right_text);
 	}
 
 	public void setLeftText(int resid) {
@@ -61,18 +65,42 @@ public class HeadView extends LinearLayout {
 		mCenterText.setText(str);
 	}
 
+	public void setRightText(int resid) {
+		mRightText.setText(resid);
+	}
+
+	public void setRightText(String str) {
+		mRightText.setText(str);
+	}
+
+	public void setRightTextVisibility(int visibility) {
+		mRightText.setVisibility(visibility);
+	}
+
 	public void onClickLeftBtn(OnClickListener listener) {
 		mBackText.setOnClickListener(listener);
 	}
 
+	public void onClickRightBtn(OnClickListener listener) {
+		mRightText.setOnClickListener(listener);
+	}
+
 	public interface HeadViewListener {
-		public void setOnClick();
+		public void setLeftOnClick();
+		
+		public void setRightOnClick();
 
 		public void setHeadTitle(int resid);
 
 		public void setHeadTitle(String str);
 
 		public void setHeadViewVisibility(int visibility);
+
+		public void setRightText(int resid);
+
+		public void setRightText(String str);
+
+		public void setRightTextVisibility(int visibility);
 	}
 
 }

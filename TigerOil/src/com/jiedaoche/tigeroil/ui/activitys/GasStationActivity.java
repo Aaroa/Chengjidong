@@ -1,10 +1,10 @@
 package com.jiedaoche.tigeroil.ui.activitys;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
@@ -15,14 +15,12 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jiedaoche.tigeroil.common.dialog.PopupWindowUtil;
 import com.jiedaoche.tigeroil.ui.BaseActivity;
 import com.jiedaoche.tigeroil.ui.TOApplication;
-import com.jiedaoche.tigeroil.ui.activitys.adapter.GasStationCommonAdapter;
-import com.jiedaoche.tigeroil.ui.activitys.adapter.GasStationNearbyAdapter;
-import com.jiedaoche.tigeroil.ui.activitys.adapter.GasStationViewPager;
+import com.jiedaoche.tigeroil.ui.activitys.adapter.GasStationFragmentAdapter;
 import com.jiedaoche.tigeroil.ui.activitys.adapter.PopupListViewAdapter;
+import com.jiedaoche.tigeroil.ui.activitys.fragment.GasStationNearFragment;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ContentView;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -50,20 +48,13 @@ public class GasStationActivity extends BaseActivity implements
 	@ViewInject(R.id.nearby_text)
 	private TextView mNearbyText;
 
-	private List<View> mList = new ArrayList<View>();
-
-	private ListView mCommonListView;
-	private PullToRefreshListView mNearbyListView;
-
-	private GasStationViewPager mViewPageAdapter;
-
-	private GasStationCommonAdapter mCommonAdapter;
-
-	private GasStationNearbyAdapter mNearbyAdapter;
-
 	private String mContent[];
 
 	private PopupWindow mPopupWindow;
+
+	private GasStationFragmentAdapter mAdapter;
+
+	private boolean listMode = true;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -71,9 +62,9 @@ public class GasStationActivity extends BaseActivity implements
 		ViewUtils.inject(this);
 		TOApplication.getInstance().addActivity(this);
 		setHeadTitle("加油站");
+		setRightText("地图");
+		setRightTextVisibility(View.INVISIBLE);
 		initView();
-		initCommonView();
-		initNearbyView();
 	}
 
 	@Override
@@ -123,32 +114,9 @@ public class GasStationActivity extends BaseActivity implements
 	}
 
 	private void initView() {
-		View mCommonGasStation = getLayoutInflater().inflate(
-				R.layout.gas_station_common_layout, null);
-		mCommonListView = (ListView) mCommonGasStation
-				.findViewById(R.id.gas_station_common_listview);
-
-		View mNearbyGasStation = getLayoutInflater().inflate(
-				R.layout.gas_station_nearby_layout, null);
-		mNearbyListView = (PullToRefreshListView) mNearbyGasStation
-				.findViewById(R.id.gas_station_nearby_listview);
-
-		mList.add(mCommonGasStation);
-		mList.add(mNearbyGasStation);
-
-		mViewPageAdapter = new GasStationViewPager(mList);
-		mViewPager.setAdapter(mViewPageAdapter);
+		mAdapter = new GasStationFragmentAdapter(getSupportFragmentManager());
+		mViewPager.setAdapter(mAdapter);
 		mViewPager.setOnPageChangeListener(this);
-	}
-
-	private void initCommonView() {
-		mCommonAdapter = new GasStationCommonAdapter(this);
-		mCommonListView.setAdapter(mCommonAdapter);
-	}
-
-	private void initNearbyView() {
-		mNearbyAdapter = new GasStationNearbyAdapter(this);
-		mNearbyListView.setAdapter(mNearbyAdapter);
 	}
 
 	@Override
@@ -167,17 +135,34 @@ public class GasStationActivity extends BaseActivity implements
 					R.color.main_bg_press));
 			mCommonText.setTextColor(getResources().getColor(
 					R.color.oil_text_color));
+			setRightTextVisibility(View.INVISIBLE);
 			break;
 		case 1:
 			mNearbyText.setTextColor(getResources().getColor(
 					R.color.oil_text_color));
 			mCommonText.setTextColor(getResources().getColor(
 					R.color.main_bg_press));
+			setRightTextVisibility(View.VISIBLE);
 			break;
 
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void onClickRightBtn() {
+		Intent intent = new Intent(GasStationNearFragment.SWITCH_ACTION);
+		if (listMode) {
+			intent.putExtra("flag", "map");
+			setRightText("列表");
+			listMode = false;
+		} else {
+			intent.putExtra("flag", "list");
+			setRightText("地图");
+			listMode = true;
+		}
+		sendBroadcast(intent);
 	}
 
 	private View createGradeView() {
@@ -197,6 +182,7 @@ public class GasStationActivity extends BaseActivity implements
 		});
 		return view;
 	}
+
 	private View createDistanceView() {
 		View view = getLayoutInflater().inflate(
 				R.layout.popup_defalt_listview_layout, null);
@@ -214,4 +200,5 @@ public class GasStationActivity extends BaseActivity implements
 		});
 		return view;
 	}
+
 }

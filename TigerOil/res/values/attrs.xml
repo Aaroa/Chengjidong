@@ -28,9 +28,9 @@
 
     <string-array name="grade">
         <item>全部</item>
-        <item>畅通</item>
+        <item>空闲</item>
         <item>一般</item>
-        <item>拥挤</item>
+        <item>爆满</item>
     </string-array>
     <string-array name="distance">
         <item>1公里~2公里</item>

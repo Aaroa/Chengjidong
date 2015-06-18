@@ -46,7 +46,8 @@ public abstract class BaseActivity extends FragmentActivity implements
 		super.setContentView(R.layout.activity_base);
 		mLayoutInflater = LayoutInflater.from(this);
 		findViewById();
-		setOnClick();
+		setLeftOnClick();
+		setRightOnClick();
 		initHandler();
 	}
 
@@ -92,17 +93,6 @@ public abstract class BaseActivity extends FragmentActivity implements
 		mFrameLayout.addView(view, lp);
 	}
 
-	@Override
-	public void setOnClick() {
-		mHeadView.onClickLeftBtn(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				onClickLeftBtn();
-			}
-		});
-	}
-
 	/**
 	 * 
 	 * @Title: showToast
@@ -134,6 +124,31 @@ public abstract class BaseActivity extends FragmentActivity implements
 	public void onClickLeftBtn() {
 	};
 
+	public void onClickRightBtn() {
+	}
+
+	@Override
+	public void setRightOnClick() {
+		mHeadView.onClickRightBtn(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				onClickRightBtn();
+			}
+		});
+	}
+
+	@Override
+	public void setLeftOnClick() {
+		mHeadView.onClickLeftBtn(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				onClickLeftBtn();
+			}
+		});
+	}
+
 	@Override
 	public void setHeadTitle(String str) {
 		mHeadView.setTitleText(str);
@@ -147,5 +162,20 @@ public abstract class BaseActivity extends FragmentActivity implements
 	@Override
 	public void setHeadViewVisibility(int visibility) {
 		mHeadView.setVisibility(visibility);
+	}
+
+	@Override
+	public void setRightText(int resid) {
+		mHeadView.setRightText(resid);
+	}
+
+	@Override
+	public void setRightText(String str) {
+		mHeadView.setRightText(str);
+	}
+
+	@Override
+	public void setRightTextVisibility(int visibility) {
+		mHeadView.setRightTextVisibility(visibility);
 	}
 }
