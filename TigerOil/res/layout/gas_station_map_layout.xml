@@ -54,7 +54,7 @@
             android:padding="5dip"
             android:src="@drawable/main_icon_location" />
 
-        <android.support.v4.view.ViewPager
+        <com.jiedaoche.tigeroil.view.GasStationViewPager
             android:id="@+id/station_viewPager"
             android:layout_width="match_parent"
             android:layout_height="110dip"
