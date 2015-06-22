@@ -84,6 +84,8 @@ public class GasStationMapFragment extends Fragment implements OnClickListener {
 
 	private String[] state = new String[] { "空闲", "一般", "爆满", "空闲" };
 
+	private String[] distance = new String[] { "2.1", "8.0", "6.0", "4.3" };
+
 	private int[] focusIcon = { R.drawable.icon_focus_marka,
 			R.drawable.icon_focus_markb, R.drawable.icon_focus_markc,
 			R.drawable.icon_focus_markd, R.drawable.icon_focus_marke,
@@ -150,8 +152,12 @@ public class GasStationMapFragment extends Fragment implements OnClickListener {
 		// 标记
 		for (int i = 0; i < lat.length; i++) {
 			LatLng latLng = new LatLng(lng[i], lat[i]);
-			BitmapDescriptor descriptor = BitmapDescriptorFactory
-					.fromResource(markIcon[i]);
+			BitmapDescriptor descriptor = null;
+			if (i == 0) {
+				descriptor = BitmapDescriptorFactory.fromResource(focusIcon[i]);
+			} else
+				descriptor = BitmapDescriptorFactory.fromResource(markIcon[i]);
+			BitmapDescriptorFactory.fromResource(focusIcon[i]);
 			OverlayOptions options = new MarkerOptions().position(latLng).icon(
 					descriptor);
 			mBaiduMap.addOverlay(options);
@@ -193,7 +199,7 @@ public class GasStationMapFragment extends Fragment implements OnClickListener {
 	private void initView() {
 		for (int i = 0; i < lat.length; i++) {
 			mList.add(createView((i + 1) + "、" + stationName[i], address[i],
-					state[i], lng[i], lat[i]));
+					distance[i], state[i], lng[i], lat[i]));
 		}
 		adapter = new GasStationViewPagerAdapter(mList);
 		mViewPager.setAdapter(adapter);
@@ -202,6 +208,7 @@ public class GasStationMapFragment extends Fragment implements OnClickListener {
 			@Override
 			public void onPageSelected(int arg0) {
 				LatLng ll = new LatLng(lng[arg0], lat[arg0]);
+				mBaiduMap.clear();
 				for (int i = 0; i < lat.length; i++) {
 					if (arg0 == i) {
 						BitmapDescriptor descriptor = BitmapDescriptorFactory
@@ -220,31 +227,27 @@ public class GasStationMapFragment extends Fragment implements OnClickListener {
 					} else {
 						LatLng latLng = new LatLng(lng[i], lat[i]);
 						BitmapDescriptor descriptor = BitmapDescriptorFactory
-								.fromResource(markIcon[arg0]);
+								.fromResource(markIcon[i]);
 						OverlayOptions options = new MarkerOptions().position(
 								latLng).icon(descriptor);
 						mBaiduMap.addOverlay(options);
-
 					}
 				}
 			}
 
 			@Override
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void onPageScrollStateChanged(int arg0) {
-				// TODO Auto-generated method stub
-
 			}
 		});
 	}
 
 	private View createView(final String name, final String address,
-			final String state, final double lng, final double lat) {
+			final String distance, final String state, final double lng,
+			final double lat) {
 		View view = LayoutInflater.from(getActivity()).inflate(
 				R.layout.gas_station_item_layout, null);
 		view.findViewById(R.id.gas_details).setOnClickListener(
@@ -254,8 +257,8 @@ public class GasStationMapFragment extends Fragment implements OnClickListener {
 					public void onClick(View v) {
 						Bundle bundle = new Bundle();
 						bundle.putString("name", name);
-						bundle.putString("distance", address);
-						bundle.putString("address", state);
+						bundle.putString("distance", distance);
+						bundle.putString("address", address);
 						bundle.putDouble("lng", lng);
 						bundle.putDouble("lat", lat);
 						bundle.putString("state", state);
@@ -268,10 +271,13 @@ public class GasStationMapFragment extends Fragment implements OnClickListener {
 
 					@Override
 					public void onClick(View v) {
+						// 114.030084 ,22.623357
 						// 起点
 						BNaviPoint startPotion = new BNaviPoint(currentLng,
 								currentLat, currentAddress,
 								BNaviPoint.CoordinateType.GCJ02);
+
+						// 113.376629 ,23.127302
 						// 终点
 						BNaviPoint entPotion = new BNaviPoint(lat, lng,
 								address, BNaviPoint.CoordinateType.GCJ02);
@@ -283,7 +289,7 @@ public class GasStationMapFragment extends Fragment implements OnClickListener {
 		TextView addressTV = (TextView) view.findViewById(R.id.gas_address);
 		TextView stateTV = (TextView) view.findViewById(R.id.gas_state);
 
-		nameTV.setText(name);
+		nameTV.setText(name + "     " + distance+"km");
 		addressTV.setText(address);
 		stateTV.setText(state);
 		return view;

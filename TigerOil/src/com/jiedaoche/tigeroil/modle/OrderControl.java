@@ -137,8 +137,8 @@ public class OrderControl {
 		name.setText("陈先生");
 		phone.setText("15632542387");
 		carCode.setText("粤A8888");
-		dialog = IDialogFactory.showMsgDialog(mContext, "预约订单", view, "支付",
-				"稍后支付", new OnClickListener() {
+		dialog = IDialogFactory.showMsgDialog(mContext, "预约订单", view, "预约",
+				"取消", new OnClickListener() {
 
 					@Override
 					public void onClick(View v) {

@@ -144,7 +144,8 @@
             android:layout_height="40dip"
             android:layout_marginRight="15dip"
             android:layout_weight="1"
-            android:text="地图模式" />
+            android:text="地图模式"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/write_comment"
@@ -152,7 +153,8 @@
             android:layout_width="0dip"
             android:layout_height="40dip"
             android:layout_weight="1"
-            android:text="发表评论" />
+            android:text="发表评论"
+            android:visibility="gone" />
     </LinearLayout>
 
     <TextView

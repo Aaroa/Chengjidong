@@ -161,7 +161,7 @@
         <!-- Ki7B4NYyMsAm9aof7DI4Dcyv , 8CVWvGRFVxArD8KY019oMg9R,QVkYITUi0R7YX6xhQizDPfTI -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="Ki7B4NYyMsAm9aof7DI4Dcyv" />
+            android:value="QVkYITUi0R7YX6xhQizDPfTI" />
 
         <service
             android:name="com.baidu.location.f"
