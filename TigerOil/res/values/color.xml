@@ -26,6 +26,8 @@
     
     <color name="main_menu">#aa000000</color>
     
+     <color name="province_line_border">#0066CC</color>
+    
   
 
 </resources>

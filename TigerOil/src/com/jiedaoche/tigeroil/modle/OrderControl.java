@@ -1,14 +1,19 @@
 package com.jiedaoche.tigeroil.modle;
 
+import java.util.Calendar;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -21,6 +26,10 @@ import com.jiedaoche.tigeroil.common.dialog.SeleteDateTimePickDialog.SeleteCallB
 import com.jiedaoche.tigeroil.ui.activitys.R;
 import com.jiedaoche.tigeroil.ui.activitys.adapter.SeleteTimeListViewAdapter;
 import com.jiedaoche.tigeroil.utils.ISystemTool;
+import com.jiedaoche.tigeroil.view.OnWheelScrollListener;
+import com.jiedaoche.tigeroil.view.WheelView;
+import com.jiedaoche.tigeroil.view.adapter.ArrayWheelAdapter;
+import com.jiedaoche.tigeroil.view.adapter.NumericWheelAdapter;
 import com.library.IUtils.Dialog.IDialogFactory;
 
 /**
@@ -120,6 +129,8 @@ public class OrderControl {
 	public void createOrderViewDialog() {
 		View view = LayoutInflater.from(mContext).inflate(R.layout.oder_layout,
 				null);
+		EditText dateET = (EditText) view
+				.findViewById(R.id.order_date_editText);
 		TextView gName = (TextView) view
 				.findViewById(R.id.order_gasstation_name);
 		TextView date = (TextView) view.findViewById(R.id.order_date);
@@ -129,6 +140,17 @@ public class OrderControl {
 		TextView name = (TextView) view.findViewById(R.id.order_user_name);
 		TextView phone = (TextView) view.findViewById(R.id.order_phone);
 		TextView carCode = (TextView) view.findViewById(R.id.order_car_code);
+		dateET.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					showSeleteDateDialog();
+					return true;
+				}
+				return false;
+			}
+		});
 		gName.setText(oilName);
 		date.setText(ISystemTool.getData("yyyy年MM月dd日", mDateLong) + " "
 				+ mTimeLong);
@@ -153,6 +175,111 @@ public class OrderControl {
 					}
 				});
 		dialog.show();
+	}
+
+	public void showSeleteDateDialog() {
+		View view = LayoutInflater.from(mContext).inflate(
+				R.layout.wheel_date_picker, null);
+
+		WheelView year = (WheelView) view.findViewById(R.id.year);
+		WheelView month = (WheelView) view.findViewById(R.id.month);
+		WheelView day = (WheelView) view.findViewById(R.id.day);
+		WheelView startTime = (WheelView) view.findViewById(R.id.start_time);
+		WheelView endTime = (WheelView) view.findViewById(R.id.end_time);
+		
+		Calendar c = Calendar.getInstance();
+		int norYear = c.get(Calendar.YEAR);
+		int norMonth=1;
+		int norDay=1;
+		
+		NumericWheelAdapter numericWheelAdapter1=new NumericWheelAdapter(mContext,1950, norYear); 
+		numericWheelAdapter1.setLabel("年");
+		year.setViewAdapter(numericWheelAdapter1);
+		year.setCyclic(true);//是否可循环滑动
+		year.setWheelForeground(android.R.color.white);
+		year.addScrollingListener(scrollListener);
+		
+		NumericWheelAdapter numericWheelAdapter2=new NumericWheelAdapter(mContext,1, 12, "%02d"); 
+		numericWheelAdapter2.setLabel("月");
+		month.setViewAdapter(numericWheelAdapter2);
+		month.setCyclic(true);
+		month.addScrollingListener(scrollListener);
+		
+		NumericWheelAdapter numericWheelAdapter=new NumericWheelAdapter(mContext,1, getDay(norYear,norMonth), "%02d");
+		numericWheelAdapter.setLabel("日");
+		day.setViewAdapter(numericWheelAdapter);
+		day.setCyclic(true);
+		
+		String[] items1=mContext.getResources().getStringArray(R.array.start_time);
+		ArrayWheelAdapter<String> numericWheelAdapter3=new ArrayWheelAdapter<String>(mContext, items1);
+		startTime.setViewAdapter(numericWheelAdapter3);
+		startTime.setCyclic(true);
+		startTime.addScrollingListener(scrollListener);
+		
+		String[] items=mContext.getResources().getStringArray(R.array.start_time);
+		ArrayWheelAdapter<String> numericWheelAdapter4=new ArrayWheelAdapter<String>(mContext, items);
+		endTime.setViewAdapter(numericWheelAdapter4);
+		endTime.setCyclic(true);
+		endTime.addScrollingListener(scrollListener);
+		
+
+		year.setVisibleItems(7);
+		month.setVisibleItems(7);
+		day.setVisibleItems(7);
+		startTime.setVisibleItems(7);
+		endTime.setVisibleItems(7);
+
+		popupWindow = PopupWindowUtil.createPopupWindow(mContext, view,
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		popupWindow.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
+	}
+	
+	OnWheelScrollListener scrollListener = new OnWheelScrollListener() {
+		@Override
+		public void onScrollingStarted(WheelView wheel) {
+
+		}
+
+		@Override
+		public void onScrollingFinished(WheelView wheel) {
+		}
+	};
+	
+	/**
+	 * 
+	 * @param year
+	 * @param month
+	 * @return
+	 */
+	private int getDay(int year, int month) {
+		int day = 30;
+		boolean flag = false;
+		switch (year % 4) {
+		case 0:
+			flag = true;
+			break;
+		default:
+			flag = false;
+			break;
+		}
+		switch (month) {
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			day = 31;
+			break;
+		case 2:
+			day = flag ? 29 : 28;
+			break;
+		default:
+			day = 30;
+			break;
+		}
+		return day;
 	}
 
 	/**
