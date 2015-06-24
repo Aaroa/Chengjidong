@@ -102,8 +102,7 @@ public class GasStationCommonAdapter extends BaseAdapter {
 								.findViewById(R.id.oil_staticon_layout));
 				control.setOilName(stationName[position]);
 				control.setOilAddress(address[position]);
-//				control.showOrderSeleteDialog();
-				control.showSeleteDateDialog();
+				control.createOrderViewDialog(false);
 			}
 		});
 		convertView.setOnClickListener(new OnClickListener() {

@@ -30,6 +30,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="horizontal" >
 
         <TextView
@@ -38,22 +40,22 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5dip"
             android:gravity="center"
-            android:paddingBottom="10dip"
             android:paddingLeft="10dip"
             android:text="预约时间:"
             android:textColor="@color/balck"
             android:textSize="16sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/order_date_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
-            android:layout_marginRight="3dip"
-            android:background="@color/transparent"
+            android:layout_marginRight="15dip"
+            android:layout_gravity="center"
+            android:gravity="left|center"
+            android:background="@drawable/settion_selector_selector"
             android:drawableRight="@drawable/down_arrow"
-            android:cursorVisible="false"
-            android:text="2015年06月24日  03:00-05:00"
+            android:text="2015年06月24日 \n03:00-05:00"
             android:textSize="16sp" />
 
         <TextView

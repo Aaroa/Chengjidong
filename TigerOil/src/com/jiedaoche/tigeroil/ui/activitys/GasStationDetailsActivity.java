@@ -129,7 +129,7 @@ public class GasStationDetailsActivity extends BaseActivity {
 										.findViewById(R.id.oil_details_layout));
 						control.setOilName(bundle.getString("name"));
 						control.setOilAddress(bundle.getString("address"));
-						control.showOrderSeleteDialog();
+						control.createOrderViewDialog(false);
 					}
 				});
 		mListHeadView.findViewById(R.id.current_order).setOnClickListener(
@@ -147,7 +147,7 @@ public class GasStationDetailsActivity extends BaseActivity {
 								.getTimeInMillis());
 						control.setmTimeLong(ISystemTool.getData("HH:mm:ss",
 								Calendar.getInstance().getTimeInMillis()));
-						control.createOrderViewDialog();
+						control.createOrderViewDialog(true);
 					}
 				});
 		Button commentBtn = (Button) mListHeadView

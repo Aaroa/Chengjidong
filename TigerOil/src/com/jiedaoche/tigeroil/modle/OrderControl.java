@@ -5,6 +5,7 @@ import java.util.Calendar;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,6 +15,7 @@ import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -51,7 +53,7 @@ public class OrderControl {
 
 	private String mTimeLong;
 
-	private Dialog dialog;
+	private Dialog dialog, timeDialog;
 
 	private String oilName;
 
@@ -110,7 +112,7 @@ public class OrderControl {
 					long arg3) {
 				mTimeLong = content[arg2];
 				IDialogFactory.dimissDialog(dialog);
-				createOrderViewDialog();
+//				createOrderViewDialog();
 			}
 		});
 		dialog = IDialogFactory.createShowDialogCancel(mContext, view,
@@ -126,10 +128,10 @@ public class OrderControl {
 	 * @return void
 	 * @throws
 	 */
-	public void createOrderViewDialog() {
+	public void createOrderViewDialog(boolean isCurrent) {
 		View view = LayoutInflater.from(mContext).inflate(R.layout.oder_layout,
 				null);
-		EditText dateET = (EditText) view
+		TextView dateET = (TextView) view
 				.findViewById(R.id.order_date_editText);
 		TextView gName = (TextView) view
 				.findViewById(R.id.order_gasstation_name);
@@ -140,17 +142,19 @@ public class OrderControl {
 		TextView name = (TextView) view.findViewById(R.id.order_user_name);
 		TextView phone = (TextView) view.findViewById(R.id.order_phone);
 		TextView carCode = (TextView) view.findViewById(R.id.order_car_code);
-		dateET.setOnTouchListener(new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+		if (isCurrent) {
+			dateET.setCompoundDrawables(null, null, null, null);
+			Calendar c=Calendar.getInstance();
+			dateET.setText(ISystemTool.getData("yyyy年MM月dd日  HH:mm", c.getTimeInMillis()));
+		}else {
+			dateET.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
 					showSeleteDateDialog();
-					return true;
 				}
-				return false;
-			}
-		});
+			});
+		}
 		gName.setText(oilName);
 		date.setText(ISystemTool.getData("yyyy年MM月dd日", mDateLong) + " "
 				+ mTimeLong);
@@ -186,42 +190,113 @@ public class OrderControl {
 		WheelView day = (WheelView) view.findViewById(R.id.day);
 		WheelView startTime = (WheelView) view.findViewById(R.id.start_time);
 		WheelView endTime = (WheelView) view.findViewById(R.id.end_time);
-		
+
 		Calendar c = Calendar.getInstance();
 		int norYear = c.get(Calendar.YEAR);
-		int norMonth=1;
-		int norDay=1;
-		
-		NumericWheelAdapter numericWheelAdapter1=new NumericWheelAdapter(mContext,1950, norYear); 
+		int norMonth = 1;
+		int norDay = 1;
+
+		NumericWheelAdapter numericWheelAdapter1 = new NumericWheelAdapter(
+				mContext, 1950, norYear);
 		numericWheelAdapter1.setLabel("年");
 		year.setViewAdapter(numericWheelAdapter1);
-		year.setCyclic(true);//是否可循环滑动
+		year.setCyclic(true);// 是否可循环滑动
 		year.setWheelForeground(android.R.color.white);
-		year.addScrollingListener(scrollListener);
-		
-		NumericWheelAdapter numericWheelAdapter2=new NumericWheelAdapter(mContext,1, 12, "%02d"); 
+		year.addScrollingListener(new OnWheelScrollListener() {
+			
+			@Override
+			public void onScrollingStarted(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onScrollingFinished(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+
+		NumericWheelAdapter numericWheelAdapter2 = new NumericWheelAdapter(
+				mContext, 1, 12, "%02d");
 		numericWheelAdapter2.setLabel("月");
 		month.setViewAdapter(numericWheelAdapter2);
 		month.setCyclic(true);
-		month.addScrollingListener(scrollListener);
-		
-		NumericWheelAdapter numericWheelAdapter=new NumericWheelAdapter(mContext,1, getDay(norYear,norMonth), "%02d");
+		month.addScrollingListener(new OnWheelScrollListener() {
+			
+			@Override
+			public void onScrollingStarted(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onScrollingFinished(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+
+		NumericWheelAdapter numericWheelAdapter = new NumericWheelAdapter(
+				mContext, 1, getDay(norYear, norMonth), "%02d");
 		numericWheelAdapter.setLabel("日");
 		day.setViewAdapter(numericWheelAdapter);
 		day.setCyclic(true);
-		
-		String[] items1=mContext.getResources().getStringArray(R.array.start_time);
-		ArrayWheelAdapter<String> numericWheelAdapter3=new ArrayWheelAdapter<String>(mContext, items1);
+		day.addScrollingListener(new OnWheelScrollListener() {
+			
+			@Override
+			public void onScrollingStarted(WheelView wheel) {
+//				Log.d("Aaron", "cc==="+wheel.get)
+			}
+			
+			@Override
+			public void onScrollingFinished(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+
+		String[] items1 = mContext.getResources().getStringArray(
+				R.array.start_time);
+		ArrayWheelAdapter<String> numericWheelAdapter3 = new ArrayWheelAdapter<String>(
+				mContext, items1);
 		startTime.setViewAdapter(numericWheelAdapter3);
 		startTime.setCyclic(true);
-		startTime.addScrollingListener(scrollListener);
-		
-		String[] items=mContext.getResources().getStringArray(R.array.start_time);
-		ArrayWheelAdapter<String> numericWheelAdapter4=new ArrayWheelAdapter<String>(mContext, items);
+		startTime.addScrollingListener(new OnWheelScrollListener() {
+			
+			@Override
+			public void onScrollingStarted(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onScrollingFinished(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+
+		String[] items = mContext.getResources().getStringArray(
+				R.array.start_time);
+		ArrayWheelAdapter<String> numericWheelAdapter4 = new ArrayWheelAdapter<String>(
+				mContext, items);
 		endTime.setViewAdapter(numericWheelAdapter4);
 		endTime.setCyclic(true);
-		endTime.addScrollingListener(scrollListener);
-		
+		endTime.addScrollingListener(new OnWheelScrollListener() {
+			
+			@Override
+			public void onScrollingStarted(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onScrollingFinished(WheelView wheel) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		year.setVisibleItems(7);
 		month.setVisibleItems(7);
@@ -229,11 +304,23 @@ public class OrderControl {
 		startTime.setVisibleItems(7);
 		endTime.setVisibleItems(7);
 
-		popupWindow = PopupWindowUtil.createPopupWindow(mContext, view,
-				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		popupWindow.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
+		year.setCurrentItem(c.get(Calendar.YEAR)-1950);
+		month.setCurrentItem(c.get(Calendar.MONTH));
+		day.setCurrentItem(c.get(Calendar.DAY_OF_MONTH));
+		startTime.setCurrentItem(9);
+		endTime.setCurrentItem(12);
+
+		timeDialog = IDialogFactory.createShowViewDialog(mContext, view,
+				"选择预约时间", new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						IDialogFactory.dimissDialog(timeDialog);
+					}
+				});
+		timeDialog.show();
 	}
-	
+
 	OnWheelScrollListener scrollListener = new OnWheelScrollListener() {
 		@Override
 		public void onScrollingStarted(WheelView wheel) {
@@ -242,9 +329,10 @@ public class OrderControl {
 
 		@Override
 		public void onScrollingFinished(WheelView wheel) {
+
 		}
 	};
-	
+
 	/**
 	 * 
 	 * @param year
