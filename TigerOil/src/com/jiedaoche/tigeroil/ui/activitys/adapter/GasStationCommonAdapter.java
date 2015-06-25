@@ -2,28 +2,20 @@ package com.jiedaoche.tigeroil.ui.activitys.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.jiedaoche.tigeroil.common.dialog.SeleteDateTimePickDialog;
-import com.jiedaoche.tigeroil.common.dialog.SeleteDateTimePickDialog.SeleteCallBack;
 import com.jiedaoche.tigeroil.modle.OrderControl;
 import com.jiedaoche.tigeroil.ui.activitys.GasStationDetailsActivity;
 import com.jiedaoche.tigeroil.ui.activitys.R;
 import com.jiedaoche.tigeroil.utils.ISkipActivityUtil;
-import com.jiedaoche.tigeroil.utils.ISystemTool;
-import com.library.IUtils.Dialog.IDialogFactory;
 
 /**
  * 

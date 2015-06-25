@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
-            android:padding="10dip"
+            android:padding="5dip"
             android:text="预约加油站:"
             android:textColor="@color/balck"
             android:textSize="16sp" />
@@ -40,7 +40,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5dip"
             android:gravity="center"
-            android:paddingLeft="10dip"
+            android:paddingLeft="5dip"
             android:text="预约时间:"
             android:textColor="@color/balck"
             android:textSize="16sp" />
@@ -49,13 +49,13 @@
             android:id="@+id/order_date_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="15dip"
             android:layout_gravity="center"
-            android:gravity="left|center"
+            android:layout_marginRight="15dip"
             android:background="@drawable/settion_selector_selector"
             android:drawableRight="@drawable/down_arrow"
-            android:text="2015年06月24日 \n03:00-05:00"
+            android:gravity="left|center"
+            android:paddingLeft="10dip"
+            android:paddingRight="5dip"
             android:textSize="16sp" />
 
         <TextView
@@ -71,14 +71,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
+            android:gravity="center"
+            android:padding="5dip"
             android:text="加油站位置:"
             android:textColor="@color/balck"
             android:textSize="16sp" />
@@ -87,22 +89,25 @@
             android:id="@+id/order_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:text="2014-09-12  23:01-13:34"
+            android:gravity="center|left"
             android:textColor="@color/balck"
             android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
+            android:gravity="center"
+            android:padding="5dip"
             android:text="加油站电话:"
             android:textColor="@color/balck"
             android:textSize="16sp" />
@@ -111,22 +116,25 @@
             android:id="@+id/order_gasstation_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:text="2014-09-12  23:01-13:34"
+            android:gravity="center"
             android:textColor="@color/balck"
             android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
+            android:gravity="center"
+            android:padding="5dip"
             android:text="预约人:"
             android:textColor="@color/balck"
             android:textSize="16sp" />
@@ -135,22 +143,25 @@
             android:id="@+id/order_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:text="2014-09-12  23:01-13:34"
+            android:gravity="center"
             android:textColor="@color/balck"
             android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
+            android:gravity="center"
+            android:padding="5dip"
             android:text="预约电话:"
             android:textColor="@color/balck"
             android:textSize="16sp" />
@@ -159,22 +170,25 @@
             android:id="@+id/order_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:text="2014-09-12  23:01-13:34"
+            android:gravity="center"
             android:textColor="@color/balck"
             android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
+            android:gravity="center"
+            android:padding="5dip"
             android:text="预约车牌号:"
             android:textColor="@color/balck"
             android:textSize="16sp" />
@@ -183,7 +197,9 @@
             android:id="@+id/order_car_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dip"
+            android:gravity="center"
             android:textColor="@color/balck"
             android:textSize="16sp" />
     </LinearLayout>

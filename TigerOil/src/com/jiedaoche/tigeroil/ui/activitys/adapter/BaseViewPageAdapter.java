@@ -1,16 +1,15 @@
 package com.jiedaoche.tigeroil.ui.activitys.adapter;
 
-import com.jiedaoche.tigeroil.ui.activitys.CommonWebViewActivity;
-import com.jiedaoche.tigeroil.utils.ISkipActivityUtil;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+
+import com.jiedaoche.tigeroil.ui.activitys.CommonWebViewActivity;
+import com.jiedaoche.tigeroil.utils.ISkipActivityUtil;
 
 public class BaseViewPageAdapter extends PagerAdapter {
 
@@ -56,7 +55,6 @@ public class BaseViewPageAdapter extends PagerAdapter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Log.d("Aaron", "position==" + position);
 		final int p = position % mImageViews.length;
 		mImageViews[position % mImageViews.length]
 				.setOnClickListener(new OnClickListener() {

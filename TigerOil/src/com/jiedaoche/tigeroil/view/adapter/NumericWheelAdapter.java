@@ -16,10 +16,7 @@
 
 package com.jiedaoche.tigeroil.view.adapter;
 
-import com.jiedaoche.tigeroil.ui.activitys.R;
-
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
