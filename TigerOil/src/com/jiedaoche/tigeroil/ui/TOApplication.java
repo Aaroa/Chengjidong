@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 
 import com.baidu.mapapi.SDKInitializer;
 
@@ -33,6 +34,10 @@ public class TOApplication extends Application {
 		if (instance == null) {
 			instance = new TOApplication();
 		}
+		return instance;
+	}
+
+	public TOApplication getApplicationContext() {
 		return instance;
 	}
 

@@ -1,8 +1,12 @@
 package com.jiedaoche.tigeroil.ui.activitys;
 
+import java.util.List;
+
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.jiedaoche.tigeroil.bean.OrderEntity;
+import com.jiedaoche.tigeroil.modle.db.DBFactoty;
 import com.jiedaoche.tigeroil.ui.BaseActivity;
 import com.jiedaoche.tigeroil.ui.TOApplication;
 import com.jiedaoche.tigeroil.ui.activitys.adapter.OrderAdapter;
@@ -32,6 +36,7 @@ public class OrderActivity extends BaseActivity {
 	}
 
 	private void initView() {
-		mListView.setAdapter(new OrderAdapter(this));
+		List<OrderEntity> mList = DBFactoty.queryOerder();
+		mListView.setAdapter(new OrderAdapter(this, mList));
 	}
 }
