@@ -64,22 +64,24 @@ public class BaseViewPageAdapter extends PagerAdapter {
 						switch (p) {
 						case 0:
 							Bundle bundle = new Bundle();
-							bundle.putString("title", "中国新力加油站");
-							bundle.putString("url", "http://07384230083.locoso.com/");
+							bundle.putString("title", "中国石油");
+							bundle.putString("url",
+									"http://www.cnpc.com.cn/cnpc/index.shtml");
 							ISkipActivityUtil.startIntent(activity,
 									CommonWebViewActivity.class, bundle);
 							break;
 						case 1:
 							Bundle bundle1 = new Bundle();
-							bundle1.putString("title", "中国石化加油站");
-							bundle1.putString("url", "http://www.ce.cn/cysc/yq/dt/201306/19/t20130619_21528836.shtml");
+							bundle1.putString("title", "中国化");
+							bundle1.putString("url", "http://www.sinopec.com/");
 							ISkipActivityUtil.startIntent(activity,
 									CommonWebViewActivity.class, bundle1);
 							break;
 						case 2:
 							Bundle bundle2 = new Bundle();
-							bundle2.putString("title", "深圳科技园加油站");
-							bundle2.putString("url", "http://www.shilirhy.com/");
+							bundle2.putString("title", "中油BP");
+							bundle2.putString("url",
+									"http://www.bp-petrochina.com.cn/bppc/index.asp");
 							ISkipActivityUtil.startIntent(activity,
 									CommonWebViewActivity.class, bundle2);
 							break;
